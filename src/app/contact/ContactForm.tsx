@@ -1,16 +1,4 @@
-"use client";
-
-import { useState, FormEvent } from "react";
-
 export default function ContactForm() {
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    setSubmitting(true);
-    // Allow native form submission to proceed — Netlify handles the POST
-    // and redirects to the action URL (/thank-you).
-  };
-
   return (
     <form
       className="contact-form"
@@ -18,7 +6,6 @@ export default function ContactForm() {
       method="POST"
       action="/thank-you"
       data-netlify="true"
-      onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
 
@@ -117,12 +104,8 @@ export default function ContactForm() {
         />
       </div>
 
-      <button
-        className="contact__cta"
-        type="submit"
-        disabled={submitting}
-      >
-        {submitting ? "Sending..." : "Send Message"}
+      <button className="contact__cta" type="submit">
+        Send Message
       </button>
     </form>
   );
