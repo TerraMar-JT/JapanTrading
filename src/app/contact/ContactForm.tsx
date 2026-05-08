@@ -1,34 +1,14 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 
 export default function ContactForm() {
-  const router = useRouter();
-  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    const formData = new FormData(e.currentTarget);
-    formData.append("form-name", "contact");
-
-    try {
-      const res = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
-      });
-
-      if (res.ok) {
-        router.push("/thank-you");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    setSubmitting(true);
+    // Allow native form submission to proceed — Netlify handles the POST
+    // and redirects to the action URL (/thank-you).
   };
 
   return (
@@ -36,6 +16,7 @@ export default function ContactForm() {
       className="contact-form"
       name="contact"
       method="POST"
+      action="/thank-you"
       data-netlify="true"
       onSubmit={handleSubmit}
     >
@@ -136,18 +117,12 @@ export default function ContactForm() {
         />
       </div>
 
-      {status === "error" && (
-        <p className="contact-form__error">
-          Failed to send message. Please try again.
-        </p>
-      )}
-
       <button
         className="contact__cta"
         type="submit"
-        disabled={status === "sending"}
+        disabled={submitting}
       >
-        {status === "sending" ? "Sending..." : "Send Message"}
+        {submitting ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

@@ -1,5 +1,6 @@
 <!-- Hidden form for Netlify Forms detection at build time -->
-<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+<form name="contact" method="POST" data-netlify="true" action="/thank-you" hidden>
+  <input type="hidden" name="form-name" value="contact" />
   <input name="title" />
   <input name="name" />
   <input name="email" />
