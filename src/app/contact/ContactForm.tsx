@@ -1,24 +1,25 @@
 export default function ContactForm() {
   return (
     <form
-      className="contact-form"
       name="contact"
       method="POST"
-      action="/form-success.html"
       data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/__forms.html"
     >
       <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Don&apos;t fill this out: <input name="bot-field" />
+        </label>
+      </p>
 
       <div className="contact-form__row">
         <div className="contact-form__field contact-form__field--title">
           <label className="contact-form__label" htmlFor="title">
             Title
           </label>
-          <select
-            className="contact-form__select"
-            id="title"
-            name="title"
-          >
+          <select className="contact-form__select" id="title" name="title">
             <option value="">--</option>
             <option value="Mr.">Mr.</option>
             <option value="Ms.">Ms.</option>
