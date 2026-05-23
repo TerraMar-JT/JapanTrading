@@ -1434,6 +1434,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
 }
 
+/* Tighter letter-spacing for Japanese titles */
+:lang(ja) .section__title,
+:lang(ja) .page-hero__title,
+:lang(ja) .mission__quote {
+  letter-spacing: 0.02em;
+}
+
 /* Allow explicit line breaks in Japanese text */
 :lang(ja) .mission__quote,
 :lang(ja) .mission__description,
