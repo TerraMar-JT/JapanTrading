@@ -32,14 +32,16 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
             <ContactForm form={t.form} />
           </FadeIn>
 
-          <FadeIn>
-            <div className="company__table company__table--light" style={{ maxWidth: "700px", margin: "var(--space-3xl) auto 0" }}>
-              <div className="company__row company__row--light">
-                <p className="company__label company__label--light">{t.office.label}</p>
-                <p className="company__value company__value--light">{t.office.value}</p>
+          {t.office.value && (
+            <FadeIn>
+              <div className="company__table company__table--light" style={{ maxWidth: "700px", margin: "var(--space-3xl) auto 0" }}>
+                <div className="company__row company__row--light">
+                  <p className="company__label company__label--light">{t.office.label}</p>
+                  <p className="company__value company__value--light">{t.office.value}</p>
+                </div>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          )}
         </div>
       </section>
     </main>

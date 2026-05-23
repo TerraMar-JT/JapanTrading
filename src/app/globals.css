@@ -1418,3 +1418,29 @@ h1, h2, h3, h4, h5, h6 {
     order: -1;
   }
 }
+
+/* ============================================
+   JAPANESE LANGUAGE ADJUSTMENTS
+   ============================================ */
+
+/* Larger labels for Japanese (kanji needs more space than Latin) */
+:lang(ja) .section__label,
+:lang(ja) .page-hero__label {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+}
+
+:lang(ja) .business-card__number {
+  font-size: 0.85rem;
+}
+
+/* Allow explicit line breaks in Japanese text */
+:lang(ja) .mission__quote,
+:lang(ja) .mission__description,
+:lang(ja) .page-hero__subtitle,
+:lang(ja) .section__title,
+:lang(ja) .section__text,
+:lang(ja) .terramar-feature-card__text,
+:lang(ja) .services-list__text {
+  white-space: pre-line;
+}
