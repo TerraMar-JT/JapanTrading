@@ -1,4 +1,17 @@
-export default function ContactForm() {
+type FormTranslations = {
+  readonly title: string;
+  readonly name: string;
+  readonly email: string;
+  readonly country: string;
+  readonly company: string;
+  readonly subject: string;
+  readonly message: string;
+  readonly send: string;
+  readonly required: string;
+  readonly titleOptions: readonly { readonly value: string; readonly label: string }[];
+};
+
+export default function ContactForm({ form }: { form: FormTranslations }) {
   return (
     <form
       name="contact"
@@ -17,96 +30,61 @@ export default function ContactForm() {
       <div className="contact-form__row">
         <div className="contact-form__field contact-form__field--title">
           <label className="contact-form__label" htmlFor="title">
-            Title
+            {form.title}
           </label>
           <select className="contact-form__select" id="title" name="title">
-            <option value="">--</option>
-            <option value="Mr.">Mr.</option>
-            <option value="Ms.">Ms.</option>
-            <option value="Mrs.">Mrs.</option>
-            <option value="Dr.">Dr.</option>
+            {form.titleOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
           </select>
         </div>
         <div className="contact-form__field contact-form__field--name">
           <label className="contact-form__label" htmlFor="name">
-            Name <span className="contact-form__required">*</span>
+            {form.name} <span className="contact-form__required">{form.required}</span>
           </label>
-          <input
-            className="contact-form__input"
-            id="name"
-            name="name"
-            type="text"
-            required
-          />
+          <input className="contact-form__input" id="name" name="name" type="text" required />
         </div>
       </div>
 
       <div className="contact-form__row">
         <div className="contact-form__field">
           <label className="contact-form__label" htmlFor="email">
-            Email <span className="contact-form__required">*</span>
+            {form.email} <span className="contact-form__required">{form.required}</span>
           </label>
-          <input
-            className="contact-form__input"
-            id="email"
-            name="email"
-            type="email"
-            required
-          />
+          <input className="contact-form__input" id="email" name="email" type="email" required />
         </div>
         <div className="contact-form__field">
           <label className="contact-form__label" htmlFor="country">
-            Country
+            {form.country}
           </label>
-          <input
-            className="contact-form__input"
-            id="country"
-            name="country"
-            type="text"
-          />
+          <input className="contact-form__input" id="country" name="country" type="text" />
         </div>
       </div>
 
       <div className="contact-form__row">
         <div className="contact-form__field">
           <label className="contact-form__label" htmlFor="company">
-            Company
+            {form.company}
           </label>
-          <input
-            className="contact-form__input"
-            id="company"
-            name="company"
-            type="text"
-          />
+          <input className="contact-form__input" id="company" name="company" type="text" />
         </div>
         <div className="contact-form__field">
           <label className="contact-form__label" htmlFor="subject">
-            Subject
+            {form.subject}
           </label>
-          <input
-            className="contact-form__input"
-            id="subject"
-            name="subject"
-            type="text"
-          />
+          <input className="contact-form__input" id="subject" name="subject" type="text" />
         </div>
       </div>
 
       <div className="contact-form__field">
         <label className="contact-form__label" htmlFor="message">
-          Message <span className="contact-form__required">*</span>
+          {form.message} <span className="contact-form__required">{form.required}</span>
         </label>
-        <textarea
-          className="contact-form__textarea"
-          id="message"
-          name="message"
-          rows={6}
-          required
-        />
+        <textarea className="contact-form__textarea" id="message" name="message" rows={6} required />
       </div>
 
       <button className="contact__cta" type="submit">
-        Send Message
+        {form.send}
       </button>
     </form>
   );
