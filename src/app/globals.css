@@ -1437,7 +1437,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Tighter letter-spacing for Japanese titles */
 :lang(ja) .section__title,
 :lang(ja) .page-hero__title,
-:lang(ja) .mission__quote {
+:lang(ja) .page-hero__subtitle,
+:lang(ja) .mission__quote,
+:lang(ja) .why__item-title {
   letter-spacing: 0.02em;
 }
 
@@ -1448,6 +1450,7 @@ h1, h2, h3, h4, h5, h6 {
 :lang(ja) .section__title,
 :lang(ja) .section__text,
 :lang(ja) .terramar-feature-card__text,
-:lang(ja) .services-list__text {
+:lang(ja) .services-list__text,
+:lang(ja) .why__item-title {
   white-space: pre-line;
 }
